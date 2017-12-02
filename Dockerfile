@@ -27,11 +27,8 @@ RUN apk update && \
 	apk del build-dependencies && \
 	rm -rf /var/cache/apk/*
 
-# Set working directory
-WORKDIR /rancher-cli
 
-ADD docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-
+RUN adduser -S docker-user
+USER docker-user
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
