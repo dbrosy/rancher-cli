@@ -33,7 +33,7 @@ RUN apk update && \
 RUN adduser -S rancher-cli
 USER rancher-cli
 
-RUN /docker-entrypoint.sh"
+RUN /docker-entrypoint.sh
 
 # Set working directory
 WORKDIR /home/rancher-cli
