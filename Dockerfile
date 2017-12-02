@@ -11,6 +11,9 @@ ENV RANCHER_CLI_VERSION=v0.6.5 \
 	RANCHER_SECRET_KEY= \
 	RANCHER_ENVIRONMENT=
 
+ADD docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
 # Install dependencies and rancher
 RUN apk update && \
 	apk upgrade && \
@@ -26,7 +29,6 @@ RUN apk update && \
 	chmod +x /usr/local/bin/rancher && \
 	apk del build-dependencies && \
 	rm -rf /var/cache/apk/*
-
 
 RUN adduser -S docker-user
 USER docker-user
