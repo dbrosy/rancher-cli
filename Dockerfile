@@ -6,8 +6,13 @@ LABEL maintainer="dbrosy@gmail.com"
 ENV RANCHER_CLI_VERSION=v0.6.5
 
 # Install dependencies and rancher
-RUN apk add --no-cache ca-certificates openssh-client && \
+RUN apk update && \
+	apk upgrade && \
+	apk add --no-cache ca-certificates && \
+	apk add openssh-client && \
+	apk add iputils && \
 	apk add iproute2 && \
+	apk add curl && \
 	apk add --quiet --no-cache --virtual build-dependencies curl && \
 	curl -sSL "https://github.com/rancher/cli/releases/download/${RANCHER_CLI_VERSION}/rancher-linux-amd64-${RANCHER_CLI_VERSION}.tar.gz" | tar -xz -C /usr/local/bin/ --strip-components=2 && \
 	chmod +x /usr/local/bin/rancher && \
