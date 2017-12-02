@@ -17,4 +17,4 @@ RUN apk add --no-cache ca-certificates openssh-client && \
 WORKDIR /workspace
 
 # Executing defaults
-CMD ["/bin/sh"]
+CMD ["/bin/ash"]
