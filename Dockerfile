@@ -33,4 +33,11 @@ RUN apk update && \
 RUN adduser -S docker-user
 USER docker-user
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# Set working directory
+WORKDIR /workspace
+
+# Executing defaults
+CMD ["/bin/sh"]
