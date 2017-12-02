@@ -30,14 +30,13 @@ RUN apk update && \
 	apk del build-dependencies && \
 	rm -rf /var/cache/apk/*
 
-RUN adduser -S docker-user
-USER docker-user
+RUN adduser -S rancher-cli
+USER rancher-cli
 
-
-# ENTRYPOINT ["/docker-entrypoint.sh"]
+RUN /docker-entrypoint.sh"
 
 # Set working directory
-WORKDIR /workspace
+WORKDIR /home/rancher-cli
 
 # Executing defaults
 CMD ["/bin/sh"]
