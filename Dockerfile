@@ -13,6 +13,7 @@ RUN apk update && \
 	apk add iputils && \
 	apk add iproute2 && \
 	apk add curl && \
+	apk add bash && \
 	apk add --quiet --no-cache --virtual build-dependencies curl && \
 	curl -sSL "https://github.com/rancher/cli/releases/download/${RANCHER_CLI_VERSION}/rancher-linux-amd64-${RANCHER_CLI_VERSION}.tar.gz" | tar -xz -C /usr/local/bin/ --strip-components=2 && \
 	chmod +x /usr/local/bin/rancher && \
@@ -23,4 +24,4 @@ RUN apk update && \
 WORKDIR /workspace
 
 # Executing defaults
-CMD ["/bin/ash"]
+CMD ["/bin/sh"]
